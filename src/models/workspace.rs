@@ -93,6 +93,10 @@ impl Workspace {
         self.layout = self.layout.prev_layout();
     }
 
+    pub fn change_layout(&mut self, layout: &Layout) {
+        self.layout = layout.clone();
+    }
+
     /// Returns true if the workspace is displays a given window.
     pub fn is_displaying(&self, window: &Window) -> bool {
         for wd_t in &window.tags {
