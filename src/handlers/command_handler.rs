@@ -1,6 +1,7 @@
 use super::*;
 use crate::display_action::DisplayAction;
 use crate::utils::helpers;
+use crate::layouts::Layout;
 
 pub fn process(manager: &mut Manager, command: Command, val: Option<String>) -> bool {
     match command {
@@ -136,6 +137,16 @@ pub fn process(manager: &mut Manager, command: Command, val: Option<String>) -> 
             if let Some(workspace) = manager.focused_workspace_mut() {
                 workspace.prev_layout();
                 return true;
+            }
+            false
+        }
+        Command::ChangeLayout => {
+            if let Some(val) = val {
+                if let Some(workspace) = manager.focused_workspace_mut() {
+                    let lyt = Layout::from(&*val);
+                    workspace.change_layout(&lyt);
+                    return true;
+                }
             }
             false
         }

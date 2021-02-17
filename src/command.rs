@@ -22,6 +22,7 @@ pub enum Command {
     MouseMoveWindow,
     NextLayout,
     PreviousLayout,
+    ChangeLayout,
     IncreaseMainWidth,
     DecreaseMainWidth,
 }

@@ -120,6 +120,8 @@ fn parse_command(s: String) -> std::result::Result<ExternalCommand, ()> {
         return Ok(ExternalCommand::NextLayout);
     } else if s.starts_with("PreviousLayout") {
         return Ok(ExternalCommand::PreviousLayout);
+    } else if s.starts_with("ChangeLayout") {
+        return Ok(ExternalCommand::ChangeLayout);
     } else if s.starts_with("CloseWindow") {
         return Ok(ExternalCommand::CloseWindow);
     }
@@ -205,6 +207,7 @@ pub enum ExternalCommand {
     FocusWorkspacePrevious,
     CloseWindow,
     NextLayout,
+    ChangeLayout,
     PreviousLayout,
 }
 
